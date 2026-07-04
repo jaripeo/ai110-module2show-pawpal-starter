@@ -54,6 +54,13 @@ Paste a sample of your app's CLI or Streamlit output here so a reader can see wh
 #   ...
 ```
 
+🐾 Daily Care Plan for Jordan's Pets 🐾
+----------------------------------------
+[HIGH] Mochi: Morning Walk (30 min) - daily
+[HIGH] Mochi: Heartworm Medication (5 min) - monthly
+[MEDIUM] Luna: Laser Pointer Play (15 min) - daily
+----------------------------------------
+
 ## 🧪 Testing PawPal+
 
 ```bash
