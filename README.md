@@ -94,38 +94,31 @@ tests\test_pawpal.py .....                                                      
 =========================================== 5 passed in 0.09s ===========================================
 
 
-```
-# Paste your pytest output here
-```
 
 ## 📐 Smarter Scheduling
 
 > Fill in once you've implemented scheduling logic.
 
+
 | Feature | Method(s) | Notes |
-|---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| :--- | :--- | :--- |
+| **Task sorting** | `Scheduler.sort_by_time()` | Uses `sorted()` with a lambda function and `datetime.strptime` to arrange tasks chronologically by "HH:MM". |
+| **Filtering** | `Scheduler.filter_tasks()` | Iterates through pet tasks to exclude items already marked `is_completed=True`. |
+| **Conflict handling** | `Scheduler.detect_conflicts()` | Uses a dictionary to track scheduled times, returning warning strings if exact start times overlap. |
+| **Recurring tasks** | `Scheduler.complete_and_reschedule()` | Automatically instantiates a new `Task` object using `timedelta(days=1)` when a daily task is completed. |
 
+📸 Demo Walkthrough
 
-Task sorting: Implemented Scheduler.sort_by_time(). Uses Python's sorted() function with a lambda key and datetime.strptime to arrange tasks chronologically by their "HH:MM" start time.
+**How to use PawPal+:**
+1. **Initialize Profile:** Upon loading the app, enter the Owner's name and the Pet's core details.
+2. **Schedule Tasks:** Use the input form to add care activities, specifying the exact start time, priority, duration, and recurrence frequency (e.g., Daily).
+3. **Generate Plan:** Click "Generate Plan" to trigger the `Scheduler`. The system will filter out completed tasks, sort the remaining ones chronologically, and render them in a clean table.
+4. **Conflict Resolution:** If two tasks are scheduled at the exact same time, the UI will intercept the conflict and display a prominent warning banner above the schedule so the owner can adjust their day.
 
-Filtering: Implemented Scheduler.filter_tasks(). Can filter out completed tasks so the daily view only shows pending items, and can isolate tasks by a specific pet's name.
-
-Conflict handling: Implemented Scheduler.detect_conflicts(). A lightweight algorithm utilizing a dictionary to flag a warning if two tasks share the exact same start time.
-
-Recurring tasks: Implemented Scheduler.complete_and_reschedule(). When a task marked "daily" is completed, it utilizes Python's timedelta to automatically instantiate a new Task object due the following day.
-
-## 📸 Demo Walkthrough
-
-Describe your app in numbered steps so a reader can follow along without watching a video:
-
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
-
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+**Sample CLI Output (`main.py` verification):**
+```text
+🐾 Daily Care Plan for Dave Rodriguez's Pets 🐾
+--------------------------------------------------
+⚠️ CONFLICT: 'Give Medication' and 'Morning Walk' are both scheduled at 08:00!
+-------------------------------------------------- Mochi: Morning Walk (30 min) [HIGH] Luna: Give Medication (5 min) [HIGH] Luna: Laser Pointer Play (15 min) [MEDIUM] Mochi: Evening Feeding (15 min) [HIGH]
+--------------------------------------------------
