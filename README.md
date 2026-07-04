@@ -88,6 +88,15 @@ Sample test output:
 | Conflict handling | | e.g., overlapping time slots |
 | Recurring tasks | | e.g., daily vs. weekly |
 
+
+Task sorting: Implemented Scheduler.sort_by_time(). Uses Python's sorted() function with a lambda key and datetime.strptime to arrange tasks chronologically by their "HH:MM" start time.
+
+Filtering: Implemented Scheduler.filter_tasks(). Can filter out completed tasks so the daily view only shows pending items, and can isolate tasks by a specific pet's name.
+
+Conflict handling: Implemented Scheduler.detect_conflicts(). A lightweight algorithm utilizing a dictionary to flag a warning if two tasks share the exact same start time.
+
+Recurring tasks: Implemented Scheduler.complete_and_reschedule(). When a task marked "daily" is completed, it utilizes Python's timedelta to automatically instantiate a new Task object due the following day.
+
 ## 📸 Demo Walkthrough
 
 Describe your app in numbered steps so a reader can follow along without watching a video:
