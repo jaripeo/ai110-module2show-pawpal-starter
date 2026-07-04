@@ -69,9 +69,30 @@ pytest
 
 # Run with coverage:
 pytest --cov
+
 ```
 
+To verify the system's core behaviors, run the automated test suite using pytest:
+
+```bash
+# Run the full test suite:
+python -m pytest
+
+```
+
+
 Sample test output:
+
+C:...\codepath\ai110-module2show-pawpal-starter>python -m pytest
+========================================== test session starts ==========================================
+platform win32 -- Python 3.9.13, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:...\codepath\ai110-module2show-pawpal-starter
+collected 5 items                                                                                        
+
+tests\test_pawpal.py .....                                                                         [100%]
+
+=========================================== 5 passed in 0.09s ===========================================
+
 
 ```
 # Paste your pytest output here
